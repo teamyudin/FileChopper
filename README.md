@@ -4,5 +4,7 @@ Takes a text file of any size and splits it into smaller files with a specified 
 Uses NServiceBus Saga with RavenDB persistence.
 
 To run:
+
 1) Start RavenDB server
+
 2) Hit enter

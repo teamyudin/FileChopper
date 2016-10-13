@@ -24,6 +24,9 @@ namespace FileChopper.FileProcessor
 
             fileSplitter.SplitFile(message.Path, outputDirectory, message.NumberOfLinesPerOutputFile);
 
+            if(message.DeleteFileAfterSplit)
+                File.Delete(message.Path);
+
             _bus.Reply(new FileProcessed
             {
                 FileId = message.FileId,

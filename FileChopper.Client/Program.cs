@@ -50,13 +50,14 @@ namespace FileChopper.Client
             var fileId = Guid.NewGuid();
             var filePath = Path.Combine(Path.GetTempPath(), fileId + ".txt");
 
-            CreateFile(100, filePath);
+            CreateFile(1000000, filePath);
 
             var message = new ProcessFile
             {
                 FileId = fileId,
                 Path = filePath,
-                NumberOfLinesPerOutputFile = 20
+                NumberOfLinesPerOutputFile = 10000,
+                DeleteFileAfterSplit = true
             };
 
             bus.Send("FileChopper.Saga", message);

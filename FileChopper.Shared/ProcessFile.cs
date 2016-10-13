@@ -8,5 +8,6 @@ namespace FileChopper.Shared
         public Guid FileId { get; set; }
         public string Path { get; set; }
         public int NumberOfLinesPerOutputFile { get; set; }
+        public bool DeleteFileAfterSplit { get; set; }
     }
 }

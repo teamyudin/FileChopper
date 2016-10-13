@@ -2,7 +2,6 @@
 using System.IO;
 using FileChopper.Shared;
 using NServiceBus;
-using System.Reflection;
 
 namespace FileChopper.Client
 {
@@ -48,19 +47,32 @@ namespace FileChopper.Client
 
         private static void Start(IBus bus)
         {
-            var executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            if (executableLocation == null) return;
+            var fileId = Guid.NewGuid();
+            var filePath = Path.Combine(Path.GetTempPath(), fileId + ".txt");
 
-            var filePath = Path.Combine(executableLocation, @"data\data.txt");
+            CreateFile(100, filePath);
 
             var message = new ProcessFile
             {
-                FileId = Guid.NewGuid(),
+                FileId = fileId,
                 Path = filePath,
                 NumberOfLinesPerOutputFile = 20
             };
 
             bus.Send("FileChopper.Saga", message);
+        }
+
+        private static void CreateFile(int numberOfLines, string filePath)
+        {
+            const string row = "asasasashjhhhasdhfalsfdhasfhashfashflaksjhfaksjhflksahflksahfksljahflaskhfaskljhflksajhflkasjhfkj";
+
+            using (var writer = File.CreateText(filePath))
+            {
+                for (var i = 0; i < numberOfLines; i++)
+                {
+                    writer.WriteLine(row);
+                }
+            }
         }
     }
 }

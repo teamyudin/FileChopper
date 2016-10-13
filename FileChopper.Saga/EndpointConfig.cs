@@ -1,4 +1,5 @@
 using NServiceBus;
+using NServiceBus.Features;
 
 namespace FileChopper.Saga
 {

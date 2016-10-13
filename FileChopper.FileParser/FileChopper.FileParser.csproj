@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91161450-6BC2-4048-ACA8-6C5211887342}</ProjectGuid>
+    <ProjectGuid>{359C9D26-E945-42B4-8B18-8DF0F14EC993}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FileChopper.Shared</RootNamespace>
-    <AssemblyName>FileChopper.Shared</AssemblyName>
+    <RootNamespace>FileChopper.FileParser</RootNamespace>
+    <AssemblyName>FileChopper.FileParser</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,6 +38,10 @@
       <HintPath>..\packages\NServiceBus.4.7.12\lib\net40\NServiceBus.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NServiceBus.Host, Version=4.7.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NServiceBus.Host.4.7.12\lib\net40\NServiceBus.Host.exe</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -49,16 +53,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CancelProcessingFile.cs" />
-    <Compile Include="ConfigErrorQueue.cs" />
-    <Compile Include="FileProcessed.cs" />
-    <Compile Include="FilesParsed.cs" />
-    <Compile Include="ParseFiles.cs" />
-    <Compile Include="ProcessFile.cs" />
+    <Compile Include="ParseFilesHandler.cs" />
+    <Compile Include="EndpointConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileChopper.Shared\FileChopper.Shared.csproj">
+      <Project>{91161450-6bc2-4048-aca8-6c5211887342}</Project>
+      <Name>FileChopper.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -68,4 +75,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(ProjectDir)$(OutputPath)NServiceBus.Host.exe</StartProgram>
+  </PropertyGroup>
 </Project>

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileChopper.Shared", "FileC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileChopper.FileProcessor", "FileChopper.FileProcessor\FileChopper.FileProcessor.csproj", "{A1B59047-D656-4579-A750-3B3E68A137E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileChopper.FileParser", "FileChopper.FileParser\FileChopper.FileParser.csproj", "{359C9D26-E945-42B4-8B18-8DF0F14EC993}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A1B59047-D656-4579-A750-3B3E68A137E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1B59047-D656-4579-A750-3B3E68A137E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1B59047-D656-4579-A750-3B3E68A137E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{359C9D26-E945-42B4-8B18-8DF0F14EC993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{359C9D26-E945-42B4-8B18-8DF0F14EC993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{359C9D26-E945-42B4-8B18-8DF0F14EC993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{359C9D26-E945-42B4-8B18-8DF0F14EC993}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
